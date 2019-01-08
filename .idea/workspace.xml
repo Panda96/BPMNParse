@@ -2,23 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca34a130-0962-4494-b9f5-adc8bd8b9352" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/End Event.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/Intermediate Event.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/Receive Task.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/Send Task.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/Task.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/elements/start Event.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BPMNGenerator/BPMNGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BPMNHandler/SAXErrorHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BPMNHandler/SAXParseHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/TaskXMLConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/TaskXMLConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bpmn/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bpmn/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/adjust/Bicycle.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adjust/Bicycle.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/temp/Tasks.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/temp/Tasks.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/temp/test.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/temp/test.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/BPMNPreprocessor/BPMNPreprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/BPMNPreprocessor/BPMNPreprocessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/adjust/Bicycle.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/adjust/Bicycle.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bpmn/converter/converter/BpmnXMLConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bpmn/converter/converter/BpmnXMLConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/Bound.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/Collaboration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/Definition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/Lane.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/Process.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/ProcessElem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/ProcessFlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XMLStructure/ProcessRef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/temp/Hotel.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/temp/Hotel.bpmn" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,9 +58,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="bpmn" value="33" />
+          <entry key="bpmn" value="36" />
           <entry key="class" value="27" />
-          <entry key="java" value="365" />
+          <entry key="java" value="371" />
           <entry key="properties" value="3" />
           <entry key="xml" value="7" />
           <entry key="xsd" value="1" />
@@ -73,23 +70,23 @@
         <counts>
           <entry key="BPMN_EDITOR" value="2" />
           <entry key="CLASS" value="27" />
-          <entry key="JAVA" value="365" />
+          <entry key="JAVA" value="371" />
           <entry key="Properties" value="3" />
-          <entry key="XML" value="39" />
+          <entry key="XML" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="bpmn" value="5" />
           <entry key="class" value="2" />
-          <entry key="java" value="6771" />
+          <entry key="java" value="6794" />
           <entry key="xml" value="300" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="6771" />
+          <entry key="JAVA" value="6794" />
           <entry key="XML" value="305" />
         </counts>
       </usages-collector>
@@ -104,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="105" selection-start-line="105" selection-end-line="105" />
+            <state relative-caret-position="413">
+              <caret line="42" column="73" selection-start-line="42" selection-start-column="73" selection-end-line="42" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,25 +110,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/adjust/temp/Tasks.bpmn">
-          <provider selected="true" editor-type-id="text-editor" />
-          <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/temp/test.bpmn">
-          <provider selected="true" editor-type-id="text-editor" />
-          <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/TaskXMLConverter.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="41" column="70" lean-forward="true" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+            <state relative-caret-position="296">
+              <caret line="598" column="64" selection-start-line="598" selection-start-column="64" selection-end-line="598" selection-end-column="64" />
               <folding>
-                <element signature="e#0#1674#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -141,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/constants/BpmnXMLConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="150" column="65" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
+            <state relative-caret-position="209">
+              <caret line="145" column="66" lean-forward="true" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -157,21 +150,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/LongDataObject.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="21" column="53" lean-forward="true" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
             </state>
           </provider>
+          <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/ManualTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/resources/temp/Hotel.bpmn">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -179,18 +170,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
               <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="618" column="87" selection-start-line="618" selection-start-column="87" selection-end-line="618" selection-end-column="87" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -236,7 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/parser/BpmnEdgeParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/parser/DataStoreParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/parser/DefinitionsParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/parser/ExtensionElementsParser.java" />
@@ -286,6 +264,7 @@
         <option value="$PROJECT_DIR$/src/main/java/bpmn/model/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/bpmn/converter/converter/TaskXMLConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn" />
         <option value="$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java" />
       </list>
     </option>
@@ -319,7 +298,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -371,96 +350,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-              <item name="converter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="BPMNGenerator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="BPMNHandler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="BPMNPreprocessor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="adjust" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="adjust" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BPMNParse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BPMNParse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -471,7 +360,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546929146553" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546929977440" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Activiti-develop" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="D:/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -615,16 +504,15 @@
       <workItem from="1545646493618" duration="1873000" />
       <workItem from="1545698043972" duration="6802000" />
       <workItem from="1546755742480" duration="7957000" />
-      <workItem from="1546926606818" duration="2537000" />
+      <workItem from="1546926606818" duration="3717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57617000" />
+    <option name="totallyTimeSpent" value="58797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.46774194" visible="true" weight="0.20735608" />
       <window_info id="Image Layers" order="1" />
@@ -635,7 +523,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33769062" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19281046" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -671,20 +559,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/SequenceFlowXMLConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/ServiceTaskXMLConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/TextAnnotationXMLConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -708,10 +582,6 @@
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn">
-      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/javax/xml/stream/XMLStreamReader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -765,6 +635,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="602">
           <caret line="79" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -976,13 +849,6 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/XMLStreamReaderUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-356">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/UserTaskXMLConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -994,13 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/constants/BpmnXMLConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="150" column="65" selection-start-line="150" selection-start-column="65" selection-end-line="150" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/LongDataObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -1008,34 +867,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="618" column="87" selection-start-line="618" selection-start-column="87" selection-end-line="618" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/ManualTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/UserTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -1058,23 +893,84 @@
       </provider>
       <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/adjust/temp/Tasks.bpmn">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/temp/test.bpmn">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="418">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/XMLStreamReaderUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/UserTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/model/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/temp/FUBerlin.bpmn">
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" column="53" lean-forward="true" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/temp/Hotel.bpmn">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/converter/BpmnXMLConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="598" column="64" selection-start-line="598" selection-start-column="64" selection-end-line="598" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/adjust/temp/Tasks.bpmn">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/bpmn/converter/constants/BpmnXMLConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="145" column="66" lean-forward="true" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/temp/test.bpmn">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/BPMNPreprocessor/BPMNPreprocessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="42" column="73" selection-start-line="42" selection-start-column="73" selection-end-line="42" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
