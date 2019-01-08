@@ -15,6 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
+
 /**
  * Created by PandaLin on 2018/12/14.
  */
@@ -29,32 +31,30 @@ public class BPMNPreprocessor {
 
         String adjust_temp = "adjust/temp";
         String adjust_admission = "adjust/admission";
-//
-//        String path = base+elements+"Task.bpmn";
-//
-//        BpmnModel model = importModel(path);
-//
-//        List<Process> processes = model.getProcesses();
-//        Process process = processes.get(0);
-//
-//        System.out.println(process.getFlowElements().size());
-//        Collection<FlowElement> flowElements = process.getFlowElements();
-//        Iterator<FlowElement> iterator = flowElements.iterator();
-//        FlowElement flowElement = null;
-//        if(iterator.hasNext()){
-//            flowElement = iterator.next();
-//        }
 
-//        if(null != flowElement){
-//            Task task = (Task)flowElement;
-//            task.set
-//        }
+        String path = base+elements+"Task.bpmn";
+
+        String[] allTasks = {"task","businessRuleTask","manualTask","receiveTask","scriptTask","sendTask","serviceTask",
+                "userTask"};
+        String callActivity = "callActivity";
+        String[] allGateways = {"exclusiveGateway","eventBasedGateway","inclusiveGateway","parallelGateway","complexGateway"};
+
+        BpmnModel model = importModel(path);
+
+        List<Process> processes = model.getProcesses();
+        Process process = processes.get(0);
+
+//        System.out.println(process.getFlowElements().size());
+        Collection<FlowElement> flowElements = process.getFlowElements();
+
+
+
 
 
 //        System.out.println(model.getProcesses().size());
 
 
-        moveDir(base+temp,base+adjust_temp);
+//        moveDir(base+temp,base+adjust_temp);
 
 
     }
