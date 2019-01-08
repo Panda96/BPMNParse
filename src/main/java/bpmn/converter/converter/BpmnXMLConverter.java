@@ -69,28 +69,8 @@ import bpmn.converter.converter.parser.SubProcessParser;
 import bpmn.converter.converter.util.BpmnXMLUtil;
 import bpmn.converter.converter.util.InputStreamProvider;
 import bpmn.converter.exceptions.XMLException;
-import bpmn.model.Activity;
-import bpmn.model.AdhocSubProcess;
-import bpmn.model.Artifact;
-import bpmn.model.Association;
-import bpmn.model.BaseElement;
-import bpmn.model.BooleanDataObject;
-import bpmn.model.BoundaryEvent;
-import bpmn.model.BpmnModel;
-import bpmn.model.DateDataObject;
-import bpmn.model.DoubleDataObject;
-import bpmn.model.EventSubProcess;
-import bpmn.model.FlowElement;
-import bpmn.model.FlowNode;
-import bpmn.model.IntegerDataObject;
-import bpmn.model.LongDataObject;
-import bpmn.model.Pool;
+import bpmn.model.*;
 import bpmn.model.Process;
-import bpmn.model.SequenceFlow;
-import bpmn.model.StringDataObject;
-import bpmn.model.SubProcess;
-import bpmn.model.TextAnnotation;
-import bpmn.model.Transaction;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -635,6 +615,12 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
         } else {
 
             BaseBpmnXMLConverter converter = convertersToXMLMap.get(flowElement.getClass());
+
+            //Temporary solution to solve the problem that the importing "task" element becomes "manualTask" after exporting
+//            ManualTask manualTask = new ManualTask();
+//            if(flowElement.getClass().equals(manualTask.getClass())){
+//                converter = new TaskXMLConverter();
+//            }
 
             if (converter == null) {
                 throw new XMLException("No converter for " + flowElement.getClass() + " found");

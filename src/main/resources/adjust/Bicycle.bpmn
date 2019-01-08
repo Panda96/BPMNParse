@@ -38,26 +38,26 @@
         <flowNodeRef>endevent2</flowNodeRef>
       </lane>
     </laneSet>
-    <manualTask id="usertask3" name="Prepare for assembling"></manualTask>
+    <task id="usertask3" name="Prepare for assembling"></task>
     <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
-    <manualTask id="usertask4" name="Check part quantity"></manualTask>
+    <task id="usertask4" name="Check part quantity"></task>
     <sequenceFlow id="flow9" sourceRef="exclusivegateway3" targetRef="usertask4"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway4" name="Available in-house?"></exclusiveGateway>
     <sequenceFlow id="flow10" sourceRef="usertask4" targetRef="exclusivegateway4"></sequenceFlow>
-    <manualTask id="usertask5" name="Order part"></manualTask>
+    <task id="usertask5" name="Order part"></task>
     <sequenceFlow id="flow11" name="No" sourceRef="exclusivegateway4" targetRef="usertask5"></sequenceFlow>
-    <manualTask id="usertask6" name="Reserve Part"></manualTask>
+    <task id="usertask6" name="Reserve Part"></task>
     <sequenceFlow id="flow12" name="Yes" sourceRef="exclusivegateway4" targetRef="usertask6"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway5" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow13" sourceRef="usertask6" targetRef="exclusivegateway5"></sequenceFlow>
     <sequenceFlow id="flow14" sourceRef="usertask5" targetRef="exclusivegateway5"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway6" name="Any part left unchecked"></exclusiveGateway>
     <sequenceFlow id="flow16" sourceRef="exclusivegateway5" targetRef="exclusivegateway6"></sequenceFlow>
-    <manualTask id="usertask7" name="Select unchecked part"></manualTask>
+    <task id="usertask7" name="Select unchecked part"></task>
     <sequenceFlow id="flow17" name="Yes" sourceRef="exclusivegateway6" targetRef="usertask7"></sequenceFlow>
     <sequenceFlow id="flow18" sourceRef="usertask7" targetRef="exclusivegateway3"></sequenceFlow>
     <sequenceFlow id="flow19" sourceRef="usertask3" targetRef="parallelgateway2"></sequenceFlow>
-    <manualTask id="usertask8" name="Assemble bicycle"></manualTask>
+    <task id="usertask8" name="Assemble bicycle"></task>
     <sequenceFlow id="flow20" sourceRef="parallelgateway2" targetRef="usertask8"></sequenceFlow>
     <sequenceFlow id="flow21" name="No" sourceRef="exclusivegateway6" targetRef="parallelgateway2"></sequenceFlow>
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
@@ -65,28 +65,28 @@
     <sequenceFlow id="flow24" sourceRef="parallelgateway1" targetRef="usertask3"></sequenceFlow>
     <parallelGateway id="parallelgateway2" name="Parallel Gateway2"></parallelGateway>
     <sequenceFlow id="flow25" sourceRef="usertask8" targetRef="usertask9"></sequenceFlow>
-    <manualTask id="usertask9" name="Ship bicycle to customer"></manualTask>
+    <task id="usertask9" name="Ship bicycle to customer"></task>
     <endEvent id="endevent2" name="End"></endEvent>
     <sequenceFlow id="flow26" sourceRef="usertask9" targetRef="endevent2"></sequenceFlow>
-    <manualTask id="usertask10" name="Receive order"></manualTask>
+    <task id="usertask10" name="Receive order"></task>
     <sequenceFlow id="flow27" sourceRef="startevent1" targetRef="usertask10"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway7" name="Premium customer?"></exclusiveGateway>
     <sequenceFlow id="flow28" sourceRef="usertask10" targetRef="exclusivegateway7"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway8" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow29" name="Yes" sourceRef="exclusivegateway7" targetRef="exclusivegateway8"></sequenceFlow>
-    <manualTask id="usertask11" name="Check customer solvency"></manualTask>
+    <task id="usertask11" name="Check customer solvency"></task>
     <sequenceFlow id="flow30" name="No" sourceRef="exclusivegateway7" targetRef="usertask11"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway9" name="OK?"></exclusiveGateway>
     <sequenceFlow id="flow31" sourceRef="usertask11" targetRef="exclusivegateway9"></sequenceFlow>
     <sequenceFlow id="flow32" name="Yes" sourceRef="exclusivegateway9" targetRef="exclusivegateway8"></sequenceFlow>
-    <manualTask id="usertask12" name="Approve order without debit"></manualTask>
+    <task id="usertask12" name="Approve order without debit"></task>
     <sequenceFlow id="flow33" sourceRef="exclusivegateway8" targetRef="usertask12"></sequenceFlow>
-    <manualTask id="usertask13" name="Debit guest's account"></manualTask>
+    <task id="usertask13" name="Debit guest's account"></task>
     <sequenceFlow id="flow34" name="No" sourceRef="exclusivegateway9" targetRef="usertask13"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway10" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow35" sourceRef="usertask12" targetRef="exclusivegateway10"></sequenceFlow>
     <sequenceFlow id="flow36" sourceRef="usertask13" targetRef="exclusivegateway10"></sequenceFlow>
-    <manualTask id="usertask2" name="Inform storehouse and engineering department"></manualTask>
+    <task id="usertask2" name="Inform storehouse and engineering department"></task>
     <sequenceFlow id="flow37" sourceRef="exclusivegateway10" targetRef="usertask2"></sequenceFlow>
     <sequenceFlow id="flow38" sourceRef="usertask2" targetRef="parallelgateway1"></sequenceFlow>
     <startEvent id="startevent1" name="Start"></startEvent>

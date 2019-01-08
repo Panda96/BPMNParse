@@ -12,6 +12,20 @@
  */
 package bpmn.model;
 
-public abstract class Task extends Activity {
+public class Task extends Activity {
 
+//    @Override
+//    public FlowElement clone() {
+//        return null;
+//    }
+
+    public Task clone() {
+        Task clone = new Task();
+        clone.setValues(this);
+        return clone;
+    }
+
+    public void setValues(Task otherElement) {
+        super.setValues(otherElement);
+    }
 }

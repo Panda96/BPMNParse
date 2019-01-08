@@ -3,14 +3,15 @@ package BPMNPreprocessor;
 
 
 import bpmn.converter.converter.BpmnXMLConverter;
-import bpmn.model.BpmnModel;
-import bpmn.model.GraphicInfo;
-import bpmn.model.Pool;
+import bpmn.model.*;
+import bpmn.model.Process;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.*;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,34 +21,72 @@ import java.util.Map;
 public class BPMNPreprocessor {
 
     public static void main(String[] args) {
-        String temp_dir ="src/main/resources/temp/";
-        String admission_dir = "src/main/resources/admission/";
-        String hotel = "Hotel.bpmn";
-        String Bicycle = "Bicycle.bpmn";
-        String FUBerlin = "FUBerlin.bpmn";
-        String Tasks = "Tasks.bpmn";
-        String FU_Berlin = "FU_Berlin.bpmn";
 
-        String path = temp_dir+Bicycle;
+        String base = "src/main/resources/";
+        String temp ="temp";
+        String admission = "admission";
+        String elements = "elements";
 
-        BpmnModel bpmnModel = importModel(path);
-
-
-//        Map<String, GraphicInfo> map = bpmnModel.getLocationMap();
+        String adjust_temp = "adjust/temp";
+        String adjust_admission = "adjust/admission";
 //
-//        for(Map.Entry<String, GraphicInfo> entry:map.entrySet()){
-//            System.out.println(entry.getKey());
+//        String path = base+elements+"Task.bpmn";
+//
+//        BpmnModel model = importModel(path);
+//
+//        List<Process> processes = model.getProcesses();
+//        Process process = processes.get(0);
+//
+//        System.out.println(process.getFlowElements().size());
+//        Collection<FlowElement> flowElements = process.getFlowElements();
+//        Iterator<FlowElement> iterator = flowElements.iterator();
+//        FlowElement flowElement = null;
+//        if(iterator.hasNext()){
+//            flowElement = iterator.next();
+//        }
+
+//        if(null != flowElement){
+//            Task task = (Task)flowElement;
+//            task.set
 //        }
 
 
+//        System.out.println(model.getProcesses().size());
+
+
+        moveDir(base+temp,base+adjust_temp);
+
+
+    }
+
+    public static void moveDir(String sourceDir, String targetDir){
+        System.out.println(sourceDir);
+        System.out.println(targetDir);
+
+        File srcDir = new File(sourceDir);
+        File tgtDir = new File(targetDir);
+        if(srcDir.isDirectory()&& tgtDir.isDirectory()){
+            File[] files = srcDir.listFiles();
+            for(File f:files){
+                String fileName = f.getName();
+//                System.out.println(fileName);
+                if(f.isFile()&&fileName.endsWith(".bpmn")){
+                    String path = sourceDir+"/"+fileName;
+                    String adjustPath = targetDir+"/"+fileName;
+                    move(path,adjustPath);
+                    System.out.println(fileName);
+                }
+            }
+        }else{
+            System.out.println("Source dir path or target dir path is not a directory!");
+        }
+
+    }
+
+    public static void move(String path, String adjustPath){
+        BpmnModel bpmnModel = importModel(path);
         bpmnModel = adjustPosition(bpmnModel, 6, 6);
-//
-        String adjust_dir = "src/main/resources/adjust/";
-//
-        String adjustPath = adjust_dir+Bicycle;
         exportModel(bpmnModel, adjustPath);
-
-
     }
 
 
@@ -137,6 +176,9 @@ public class BPMNPreprocessor {
         byte[] bpmnBytes = new BpmnXMLConverter().convertToXML(bpmnModel);
 
         try {
+            String dir = path.substring(0,path.lastIndexOf("/"));
+            File tgtDir = new File(dir);
+            tgtDir.mkdirs();
             FileOutputStream fos = new FileOutputStream(new File(path));
             fos.write(bpmnBytes);
             fos.close();
