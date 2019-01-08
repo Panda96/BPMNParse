@@ -5,6 +5,7 @@ package BPMNPreprocessor;
 import bpmn.converter.converter.BpmnXMLConverter;
 import bpmn.model.*;
 import bpmn.model.Process;
+import util.TaskCreator;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -25,14 +26,13 @@ public class BPMNPreprocessor {
     public static void main(String[] args) {
 
         String base = "src/main/resources/";
-        String temp ="temp";
-        String admission = "admission";
-        String elements = "elements";
+        String temp ="temp/";
+        String admission = "admission/";
+        String elements = "elements/";
 
-        String adjust_temp = "adjust/temp";
-        String adjust_admission = "adjust/admission";
+        String adjust = "adjust/";
 
-        String path = base+elements+"Task.bpmn";
+        String path = base+elements+"Task no Pool.bpmn";
 
         String[] allTasks = {"task","businessRuleTask","manualTask","receiveTask","scriptTask","sendTask","serviceTask",
                 "userTask"};
@@ -45,7 +45,22 @@ public class BPMNPreprocessor {
         Process process = processes.get(0);
 
 //        System.out.println(process.getFlowElements().size());
-        Collection<FlowElement> flowElements = process.getFlowElements();
+        List<FlowElement> flowElements = (List<FlowElement>)process.getFlowElements();
+        FlowElement flowElement =flowElements.get(0);
+
+        if(flowElement instanceof Task){
+            for(String type : allTasks){
+                Task task = TaskCreator.crate(type);
+                task.setValues(flowElement);
+
+                flowElements.clear();
+                flowElements.add(task);
+
+//                model = adjustPosition(model,6,6);
+                exportModel(model, base+adjust+elements+type+".bpmn");
+            }
+        }
+
 
 
 
@@ -71,8 +86,8 @@ public class BPMNPreprocessor {
                 String fileName = f.getName();
 //                System.out.println(fileName);
                 if(f.isFile()&&fileName.endsWith(".bpmn")){
-                    String path = sourceDir+"/"+fileName;
-                    String adjustPath = targetDir+"/"+fileName;
+                    String path = sourceDir+fileName;
+                    String adjustPath = targetDir+fileName;
                     move(path,adjustPath);
                     System.out.println(fileName);
                 }
@@ -92,16 +107,21 @@ public class BPMNPreprocessor {
 
     public static BpmnModel adjustPosition(BpmnModel bpmnModel, double targetX, double targetY){
 
-//        Process mainProcess = bpmnModel.getMainProcess();
-//        System.out.println(mainProcess.getId());
-//        System.out.println(mainProcess.getName());
-//        System.out.println(mainProcess.get);
-        Pool firstPool = bpmnModel.getPools().get(0);
-//        System.out.println(firstPool.getProcessRef());
-//        System.out.println(firstPool.getName());
-//        System.out.println(firstPool.getId());
+        String id = "";
+        List<Pool> pools = bpmnModel.getPools();
+        if(pools.size()>0){
+            id = pools.get(0).getId();
+        }else{
+            List<Process> processes = bpmnModel.getProcesses();
+            Process process = processes.get(0);
 
-        GraphicInfo mainProcessGI = bpmnModel.getGraphicInfo(firstPool.getId());
+            List<FlowElement> flowElements = (List<FlowElement>)process.getFlowElements();
+            FlowElement flowElement =flowElements.get(0);
+            id =flowElement.getId();
+        }
+
+
+        GraphicInfo mainProcessGI = bpmnModel.getGraphicInfo(id);
 //
         double x = mainProcessGI.getX();
 
