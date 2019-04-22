@@ -2,7 +2,10 @@ package BPMNPreprocessor;
 
 
 import bpmn.converter.converter.BpmnXMLConverter;
-import bpmn.model.*;
+import bpmn.converter.exceptions.XMLException;
+import bpmn.model.BpmnModel;
+import bpmn.model.FlowElement;
+import bpmn.model.GraphicInfo;
 import bpmn.model.Process;
 
 import javax.xml.stream.XMLInputFactory;
@@ -54,84 +57,164 @@ public class BPMNPreprocessor {
 //            }
 //        }
 
-        count();
+//        run_move();
+//        count();
+        run_normalization();
     }
 
     public static void run_normalization() {
-        String input_dir = "E:/diagrams/genMyModel/files";
-        String output_dir = "E:/diagrams/genMyModel/adjust_files";
+        String input_dir = "E:/diagrams/bpmn-io/bpmn2image/files_04_22";
+        String output_dir = "E:/diagrams/bpmn-io/bpmn2image/files_valid_04_22";
         normalize_bpmn(input_dir, output_dir);
+
     }
 
     public static void run_move() {
 
-        String input_dir = base + "files";
-        String output_dir = base + adjust + "files";
+//        String input_dir = "E:/diagrams/bpmn-io/bpmn2image/files_2019_04_21/";
+        String output_dir = "E:/diagrams/bpmn-io/bpmn2image/files_2019_04_21/";
+        String input_dir = "E:/diagrams/bpmn-io/bpmn2image/files/";
+//        String output_dir = "E:/diagrams/bpmn-io/bpmn2image/files/";
+        moveDir(input_dir, output_dir);
+    }
+
+    public static void filter() {
+        String bpmn_dir = "E:/diagrams/bpmn-io/bpmn2image/files_2019_04_21/";
+        String img_dir = "E:/diagrams/bpmn-io/bpmn2image/images_2019_04_21/";
+        String filter_dir = "E:/diagrams/bpmn-io/bpmn2image/mapped_files_2019_04_21/";
+        File bpmn_Dir = new File(bpmn_dir);
+        File[] bpmns = bpmn_Dir.listFiles();
+
+        File img_Dir = new File(img_dir);
+        File[] imgs = img_Dir.listFiles();
+        int i = 0;
+        int j = 0;
+        while (i < bpmns.length) {
+            File f = bpmns[i];
+            String name = f.getName();
+            String img_name = name.replace(".bpmn", ".png");
+
+            if (img_name.equals(imgs[j].getName())) {
+                j++;
+                f.renameTo(new File(filter_dir + name));
+
+            }
+            i++;
+            if (i % 100 == 0) {
+                System.out.println(i);
+            }
+        }
+
+
     }
 
     public static void count() {
-        String dirname = "src/main/resources/multi_bpmn/bpmn/";
+//        String dirname = "E:/diagrams/bpmn-io/bpmn2image/mapped_files_2019_04_21/";
+        String dirname = "E:/diagrams/bpmn-io/bpmn2image/files/";
+//        String dirname = "src/main/resources/bpmn/admission";
         File dir = new File(dirname);
         File[] bpmns = {};
         if (dir.isDirectory()) {
             bpmns = dir.listFiles();
         }
-        String filename = bpmns[2].getAbsolutePath();
-        System.out.println(filename);
-        BpmnModel bpmnModel = importModel(filename);
 
-        count_flow_elements(bpmnModel);
-        System.out.println("***********************************************************************");
-        count_flows(bpmnModel);
+        try {
+            FileWriter eleWriter = new FileWriter("src/main/java/elements.txt");
+            FileWriter flowWriter = new FileWriter("src/main/java/flows.txt");
+            for (int i = 0; i < bpmns.length; i++) {
+                File f = bpmns[i];
+                String filename = f.getAbsolutePath();
+                try {
+                    BpmnModel bpmnModel = importModel(filename);
+                    count_flow_elements(bpmnModel, f.getName(), eleWriter);
+                    count_flows(bpmnModel, f.getName(), flowWriter);
+                } catch (XMLException xe) {
+                    System.out.println(filename);
+                    continue;
+                }
+
+
+                if (i % 100 == 0) {
+                    System.out.println(i);
+                }
+            }
+
+            eleWriter.close();
+            flowWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
-    private static void count_flow_elements(BpmnModel bpmnModel){
+    private static void count_flow_elements(BpmnModel bpmnModel, String fileName, FileWriter fw) {
         Map<String, GraphicInfo> map = bpmnModel.getLocationMap();
+
         for (Map.Entry<String, GraphicInfo> entry : map.entrySet()) {
 
             FlowElement flowElement = bpmnModel.getFlowElement(entry.getKey());
             String className = "";
-            if(flowElement!=null){
+            if (flowElement != null) {
                 className = flowElement.getClass().toString();
 
-            }else {
+            } else {
                 try {
                     Process process = bpmnModel.getProcess(entry.getKey());
                     className = process.getClass().toString();
-                }catch (NullPointerException e){
-                    className=".Empty Process";
+                } catch (NullPointerException e) {
+                    className = ".EmptyProcess";
                 }
 
             }
 
-            System.out.println(entry.getKey()+" \t"+className.substring(className.lastIndexOf(".")+1));
+            String id = fileName.substring(0, fileName.lastIndexOf("_"));
+//            String id = fileName;
+
+            String flowElementType = className.substring(className.lastIndexOf(".") + 1);
             GraphicInfo value = entry.getValue();
-            System.out.println("["+value.getX()+","+value.getY()+","+value.getWidth()+","+value.getHeight()+"]");
-            System.out.println("-----------------------------");
+            String elementPosition = "[" + value.getX() + "," + value.getY() + "," + value.getWidth() + "," + value.getHeight() + "]";
+
+            try {
+                fw.write(id + ";" + flowElementType + ";" + elementPosition + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    private static void count_flows(BpmnModel bpmnModel){
+    private static void count_flows(BpmnModel bpmnModel, String fileName, FileWriter fw) {
         Map<String, List<GraphicInfo>> map = bpmnModel.getFlowLocationMap();
-        for(Map.Entry<String, List<GraphicInfo>> entry: map.entrySet()){
+        for (Map.Entry<String, List<GraphicInfo>> entry : map.entrySet()) {
             FlowElement flowElement = bpmnModel.getFlowElement(entry.getKey());
             String className = "";
-            if(flowElement!=null){
+            if (flowElement != null) {
                 className = flowElement.getClass().toString();
-            }else{
-                try{
+            } else {
+                try {
                     className = bpmnModel.getMessageFlow(entry.getKey()).getClass().toString();
-                }catch (NullPointerException e){
-                    className = ".Unknown Flow";
+                } catch (NullPointerException e) {
+                    className = ".UnknownFlow";
                 }
 
             }
-            System.out.println(entry.getKey()+" \t"+className.substring(className.lastIndexOf(".")+1));
+            String id = fileName.substring(0, fileName.lastIndexOf("_"));
+//            String id = fileName;
+
+            String flowType = className.substring(className.lastIndexOf(".") + 1);
             List<GraphicInfo> graphicInfoList = entry.getValue();
+            String points = "[ ";
             for (GraphicInfo graphicInfo : graphicInfoList) {
-                System.out.print("("+graphicInfo.getX()+","+graphicInfo.getY()+") ");
+                String point = "(" + graphicInfo.getX() + "," + graphicInfo.getY() + ") ";
+                points = points + point;
             }
-            System.out.println("\n-----------------------------");
+            points = points + "]";
+
+            try {
+                fw.write(id + ";" + flowType + ";" + points + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -149,11 +232,8 @@ public class BPMNPreprocessor {
             for (File bpmn : bpmns) {
                 String name = bpmn.getName();
                 String[] parts = name.split("_");
-                parts[0] = compensate(parts[0], 3);
-                parts[1] = compensate(parts[1], 2);
 
                 String input_file = dir_name + "/" + name;
-//                System.out.println(input_file);
                 BpmnModel bpmnModel = new BpmnModel();
                 try {
                     bpmnModel = importModel(input_file);
@@ -161,13 +241,14 @@ public class BPMNPreprocessor {
                     System.out.println(parts[0] + "_" + parts[1] + " import invalid!");
                     continue;
                 }
-                name = "";
-                for (int i = 0; i < parts.length - 1; i++) {
-                    name = name + parts[i] + "_";
-                }
-                name += parts[parts.length - 1];
+//                name = "";
+//                for (int i = 0; i < parts.length - 1; i++) {
+//                    name = name + parts[i] + "_";
+//                }
+//                name += parts[parts.length - 1];
 
                 String output_file = output_dir + "/" + name;
+//                System.out.println(output_file);
                 try {
                     exportModel(bpmnModel, output_file);
                 } catch (Exception e) {
@@ -225,39 +306,53 @@ public class BPMNPreprocessor {
      * @param adjustPath
      */
     public static void move(String path, String adjustPath) {
-        BpmnModel bpmnModel = importModel(path);
-        bpmnModel = adjustPosition(bpmnModel, 6, 6);
-        exportModel(bpmnModel, adjustPath);
+
+        try {
+            BpmnModel bpmnModel = importModel(path);
+            bpmnModel = adjustPosition(bpmnModel, 6, 6);
+            exportModel(bpmnModel, adjustPath);
+        } catch (Exception e) {
+
+            File file = new File("src/main/java/miss.txt");
+            try {
+                FileWriter fw = new FileWriter(file, true);
+                fw.write(path.substring(path.lastIndexOf("/") + 1) + "\n");
+                fw.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+
     }
 
 
     public static BpmnModel adjustPosition(BpmnModel bpmnModel, double targetX, double targetY) {
 
         String id = "";
-        List<Pool> pools = bpmnModel.getPools();
-        if (pools.size() > 0) {
-            id = pools.get(0).getId();
-        } else {
-            List<Process> processes = bpmnModel.getProcesses();
-            Process process = processes.get(0);
-
-            List<FlowElement> flowElements = (List<FlowElement>) process.getFlowElements();
-            FlowElement flowElement = flowElements.get(0);
-            id = flowElement.getId();
-        }
-
-
-        GraphicInfo mainProcessGI = bpmnModel.getGraphicInfo(id);
-//
-        double x = mainProcessGI.getX();
-
-        double y = mainProcessGI.getY();
-
-        double offsetX = targetX - x;
-        double offsetY = targetY - y;
-
-
         Map<String, GraphicInfo> locationMap = bpmnModel.getLocationMap();
+
+        double min_x = 10000;
+        double min_y = 10000;
+        for (Map.Entry<String, GraphicInfo> entry : locationMap.entrySet()) {
+            GraphicInfo graphicInfo = entry.getValue();
+            if (graphicInfo.getX() < min_x) {
+                min_x = graphicInfo.getX();
+            }
+
+
+            if (graphicInfo.getY() < min_y) {
+                min_y = graphicInfo.getY();
+            }
+
+        }
+//        System.out.println(min_x + "," + min_y);
+
+        double offsetX = targetX - min_x;
+        double offsetY = targetY - min_y;
+//
+//        System.out.println(offsetX + "," + offsetY);
+
         adjustShapeGraphicInfo(locationMap, offsetX, offsetY);
         Map<String, GraphicInfo> labelLocationMap = bpmnModel.getLabelLocationMap();
         adjustShapeGraphicInfo(labelLocationMap, offsetX, offsetY);
